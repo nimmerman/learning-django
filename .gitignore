@@ -3,3 +3,4 @@ bin
 django-video.sublime-project
 django-video.sublime-workspace
 .Python
+*.pyc

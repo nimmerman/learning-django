@@ -1,4 +1,14 @@
-<form method='POST' action=''>{% csrf_token %}
-{{form.as_p}}
-<input type='submit' value='Submit' />
-</form>
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+	<div class='col-sm-6 col-sm-offset-3'>
+		<h1 class="text-align-center">Contact Us</h1>
+		<form method='POST' action=''>{% csrf_token %}
+		{{form|crispy}}
+		<input class='btn btn-default' type='submit' value='Submit' />
+		</form>
+	</div>
+</div>
+{% endblock %}

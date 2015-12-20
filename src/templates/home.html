@@ -1,6 +1,51 @@
-<h1>{{ title }}</h1>
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
 
-<form method='POST' action=''>{% csrf_token %}
-{{form.as_p}}
-<input type='submit' value='Sign Up' />
-</form>
+
+{%block jumbtron %}
+<!-- Main component for a primary marketing message or call to action -->
+<div class="jumbotron">
+	<div class="row">
+			<div class="col-sm-6">
+				<h1>HKN @Umich</h1>
+				<p>Eta Kappa Nu (HKN) strives to help progress the engineering student body through leadership, scholarship, and service. Due to the disciplines that the EECS department encompasses, the Beta Epsilon chapter here at the University of Michigan is composed of electrical, computer, and computer science engineers. As an organization, we bring services to the greater student body and community through the dB Cafe and other services, and we help our own members by providing networking and educational opportunities.</p>
+
+			</div>
+			<div class="col-sm-6" style="background-color:black;height:450px">
+			</div>
+	</div>
+</div>
+
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+
+{% if request.user.is_authenticated %}
+	<div class="col-xs-9">
+		<h2>Sign Up List</h2>
+			<table class="table">
+				{% for inst in queryset %}
+					<tr>
+						<td>{{inst.email}} </td>
+						<td>{{inst.full_name}} </td>
+						<td>{{inst.timestamp|timesince}} </td>
+					</tr>
+				{% endfor %}
+			</table>
+	</div>
+{% endif %}
+
+	<div class="col-xs-3 pull-right">
+		<h1>{{ title }}</h1>
+
+		<form method='POST' action=''>{% csrf_token %}
+			{{form|crispy}}
+			<input class="btn btn-primary" type='submit' value='Sign Up' />
+		</form>
+	</div>
+</div>
+
+
+{% endblock %}
