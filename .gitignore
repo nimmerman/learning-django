@@ -1,0 +1,5 @@
+bin
+.DS_store
+django-video.sublime-project
+django-video.sublime-workspace
+.Python
